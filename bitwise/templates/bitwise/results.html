@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bitwise Results</title>
+</head>
+<body>
+    <h2>Enter 5 Numbers</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if result %}
+    <h2>Results</h2>
+    <p><strong>Original Values:</strong> {{ result.original }}</p>
+    <p><strong>Sorted Values (>10):</strong> {{ result.sorted_over_10 }}</p>
+    <p><strong>Average:</strong> {{ result.average }}</p>
+    <p><strong>Count of Positive Numbers:</strong> {{ result.count_positive }}</p>
+    <p><strong>Even/Odd Check:</strong> {{ result.even_odd }}</p>
+    {% if result.warnings %}
+        <p style="color:red"><strong>Warnings:</strong> {{ result.warnings }}</p>
+    {% endif %}
+    {% endif %}
+</body>
+</html>
